@@ -1,3 +1,5 @@
+from click import Path
+
 from bot_instance import bot
 from config import ADMIN_ID
 from keyboards import main_keyboard
@@ -26,7 +28,7 @@ def option_handler(message):
 
     elif option == "💻 Software Hub":
 
-        file_path = "CET_software_hub/index.html"
+        file_path = Path(__file__).resolve().parent.parent / "CET_Software_Hub" / "index.html"
 
         with open(file_path, "rb") as file:
             bot.send_document(chat_id, file, caption="💻 CET Software Hub\n\nDownload the file and open it with your browser."

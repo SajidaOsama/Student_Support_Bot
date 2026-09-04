@@ -30,7 +30,7 @@ def option_handler(message):
 
         file_path = Path(__file__).resolve().parent.parent / "CET_Software_Hub" / "index.html"
 
-        with open(file_path, "rb") as file:
+        with file_path.open("rb") as file:
             bot.send_document(chat_id, file, caption="💻 CET Software Hub\n\nDownload the file and open it with your browser."
 )
 

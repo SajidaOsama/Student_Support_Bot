@@ -7,6 +7,7 @@ def main_menu(is_admin=False):
     main_menu.add(
         KeyboardButton("🤖 CETSU Bots"),
         KeyboardButton("📢 Announcements & Group Chats"),
+        KeyboardButton("💻 Software Hub"),
         KeyboardButton("📥 Feedback")
     )
     if is_admin:

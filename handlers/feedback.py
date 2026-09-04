@@ -11,7 +11,7 @@ from database.models import save_feedback
 feedback_mode_users = set()
 
 # creating the menu option response handler:
-@bot.message_handler(content_types=["text"], func=lambda message: message.text in ['🤖 CETSU Bots', '📢 Announcements & Group Chats', '📥 Feedback', '⚙️ Admin Panel'])
+@bot.message_handler(content_types=["text"], func=lambda message: message.text in ['🤖 CETSU Bots', '📢 Announcements & Group Chats', '📥 Feedback', '💻 Software Hub', '⚙️ Admin Panel'])
 def option_handler(message):
     option = message.text
     chat_id = message.chat.id
@@ -22,6 +22,15 @@ def option_handler(message):
 
     elif option == "📥 Feedback":
         bot.send_message(chat_id, "قسم الملاحظات.", reply_markup=feedback_keyboard.feedback_menu_keyboard())
+
+
+    elif option == "💻 Software Hub":
+
+        file_path = "CET_software_hub/index.html"
+
+        with open(file_path, "rb") as file:
+            bot.send_document(chat_id, file, caption="💻 CET Software Hub\n\nDownload the file and open it with your browser."
+)
 
 
     elif option == "📢 Announcements & Group Chats":

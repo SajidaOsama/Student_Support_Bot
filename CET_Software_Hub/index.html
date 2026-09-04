@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CETSU Software Hub</title>
+<style>
+:root {
+	--navy: #06162b;
+	--navy2: #0b2342;
+	--blue: #3290e8;
+	--white: #f5f9ff;
+	--muted: #9db0c8;
+	--line: #193858;
+	--card: #0a203b;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	min-height: 100vh;
+	color: var(--white);
+	font: 15px Segoe UI, Arial, sans-serif;
+	background: radial-gradient(circle at 15% 5%, #164a78 0, #071a32 35%, #030b15 100%);
+}
+
+body:before {
+	content: "";
+	position: fixed;
+	inset: 0;
+	pointer-events: none;
+	opacity: .13;
+	background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px);
+	background-size: 52px 52px;
+}
+
+header {
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	background: #030c18dd;
+	backdrop-filter: blur(14px);
+	border-bottom: 1px solid var(--line);
+}
+
+nav {
+	max-width: 1180px;
+	margin: auto;
+	padding: 13px 20px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.brand {
+	display: flex;
+	align-items: center;
+	gap: 11px;
+	font-weight: 800;
+	margin-right: auto;
+}
+
+.logo {
+	width: 39px;
+	height: 39px;
+	border-radius: 12px;
+	border: 1px solid #377fbd;
+	background: #092949;
+	display: grid;
+	place-items: center;
+	color: #72bcff;
+	font-weight: 900;
+}
+
+.navbtn {
+	background: #091f38;
+	color: white;
+	border: 1px solid var(--line);
+	border-radius: 10px;
+	padding: 9px 12px;
+}
+
+.hero,
+.main {
+	max-width: 1180px;
+	margin: auto;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.hero {
+	padding-top: 64px;
+	padding-bottom: 30px;
+}
+
+.eyebrow {
+	color: #6ab8ff;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-weight: 800;
+	font-size: 12px;
+}
+
+h1 {
+	font-size: clamp(40px, 6vw, 72px);
+	line-height: .98;
+	margin: 12px 0;
+}
+
+.hero p {
+	max-width: 720px;
+	color: var(--muted);
+	font-size: 16px;
+	line-height: 1.7;
+}
+
+.status {
+	display: inline-flex;
+	gap: 8px;
+	align-items: center;
+	padding: 8px 12px;
+	border: 1px solid var(--line);
+	background: #081e37cc;
+	border-radius: 999px;
+	font-size: 13px;
+}
+
+.dot {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: #42d392;
+}
+
+.controls {
+	display: grid;
+	grid-template-columns: 1fr 200px;
+	gap: 10px;
+}
+
+.search,
+.select {
+	width: 100%;
+	padding: 13px;
+	background: #071b32;
+	color: white;
+	border: 1px solid var(--line);
+	border-radius: 12px;
+	outline: 0;
+}
+
+.search:focus {
+	border-color: #4299e5;
+}
+
+.chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 10px 0 30px;
+}
+
+.chip {
+	padding: 8px 12px;
+	border-radius: 999px;
+	background: #081e37;
+	color: #9db0c8;
+	border: 1px solid var(--line);
+}
+
+.chip.active {
+	background: #2785d7;
+	color: #fff;
+	border-color: #2785d7;
+}
+
+.head {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 14px;
+}
+
+.head h2 {
+	margin: 0;
+}
+
+.count {
+	color: var(--muted);
+	font-size: 13px;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 16px;
+	padding-bottom: 60px;
+}
+
+.card {
+	background: linear-gradient(145deg, #0b2747f5, #06182cf5);
+	border: 1px solid var(--line);
+	border-radius: 18px;
+	padding: 18px;
+	box-shadow: 0 18px 40px #0005;
+	transition: .2s;
+}
+
+.card:hover {
+	transform: translateY(-3px);
+	border-color: #326b9e;
+}
+
+.top {
+	display: flex;
+	gap: 13px;
+}
+
+.icon {
+	width: 51px;
+	height: 51px;
+	flex: none;
+	border-radius: 14px;
+	background: #071a31;
+	border: 1px solid #244e73;
+	display: grid;
+	place-items: center;
+	color: #75bdff;
+	font-weight: 900;
+}
+
+.card h3 {
+	margin: 2px 0 5px;
+}
+
+.meta {
+	font-size: 12px;
+	color: #72b9fa;
+}
+
+.desc {
+	color: var(--muted);
+	line-height: 1.55;
+	margin: 13px 0;
+}
+
+.tags {
+	display: flex;
+	gap: 6px;
+	flex-wrap: wrap;
+}
+
+.tag {
+	font-size: 11px;
+	padding: 5px 7px;
+	border-radius: 7px;
+	background: #071a30;
+	border: 1px solid var(--line);
+	color: #aebed0;
+}
+
+.actions {
+	display: flex;
+	gap: 8px;
+	margin-top: 16px;
+}
+
+.actions button {
+	flex: 1;
+	padding: 10px;
+	border-radius: 10px;
+	font-weight: 700;
+}
+
+.install {
+	background: #2d8ce0;
+	color: white;
+	border: 1px solid #2d8ce0;
+}
+
+.instructions {
+	background: #091d35;
+	color: white;
+	border: 1px solid var(--line);
+}
+
+.empty {
+	text-align: center;
+	color: var(--muted);
+	padding: 45px;
+	display: none;
+}
+
+.modal {
+	position: fixed;
+	inset: 0;
+	z-index: 30;
+	background: #000b;
+	display: none;
+	place-items: center;
+	padding: 20px;
+}
+
+.modal.show {
+	display: grid;
+}
+
+.dialog {
+	width: min(650px, 100%);
+	max-height: 85vh;
+	overflow: auto;
+	background: #081d35;
+	border: 1px solid #2d557a;
+	border-radius: 18px;
+	padding: 23px;
+}
+
+.close {
+	float: right;
+	background: none;
+	border: 0;
+	color: #9db0c8;
+	font-size: 25px;
+}
+
+.steps li {
+	margin: 12px 0;
+	color: #c1cfdd;
+	line-height: 1.55;
+}
+
+.note {
+	padding: 12px;
+	border-radius: 10px;
+	background: #06172b;
+	border: 1px solid var(--line);
+	color: #9db0c8;
+	font-size: 13px;
+}
+
+footer {
+	text-align: center;
+	border-top: 1px solid var(--line);
+	padding: 25px;
+	color: #6f859d;
+}
+
+@media (max-width: 850px) {
+	.grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.controls {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 570px) {
+	.grid {
+		grid-template-columns: 1fr;
+	}
+
+	h1 {
+		font-size: 43px;
+	}
+
+	.hero {
+		padding-top: 42px;
+	}
+}
+</style>
+</head>
+<body>
+<header>
+	<nav>
+		<div class="brand">
+			<div class="logo">&lt;/&gt;</div>
+			<span>CETSU Software Hub</span>
+		</div>
+		<button class="navbtn" onclick="resetFilters()">Home</button>
+		<button class="navbtn" onclick="showAbout()">About</button>
+	</nav>
+</header>
+
+<section class="hero">
+	<div class="eyebrow">College Software Library</div>
+	<h1>Tools for your<br>tech journey in CET.</h1>
+	<p>A standalone software library for CET students. Find the tools required for your courses, read the installation guide, and open the official download page when you are connected.</p>
+	<div class="status"><span class="dot"></span>Works offline</div>
+</section>
+
+<main class="main">
+	<div class="controls">
+		<input id="search" class="search" placeholder="Search software, course, major..." oninput="render()">
+		<select id="major" class="select" onchange="render()">
+			<option value="all">All majors</option>
+		</select>
+	</div>
+	<div id="chips" class="chips"></div>
+	<div class="head">
+		<h2>Software</h2>
+		<span id="count" class="count"></span>
+	</div>
+	<div id="grid" class="grid"></div>
+	<div id="empty" class="empty">No software matches your search.</div>
+</main>
+<footer>CET Software Hub • Standalone offline application</footer>
+
+<div id="modal" class="modal" onclick="if(event.target===this)closeModal()">
+	<div class="dialog">
+		<button class="close" onclick="closeModal()">×</button>
+		<div id="modalContent"></div>
+	</div>
+</div>
+
+<script>
+const apps = [
+	{
+		name: "Eclipse IDE",
+		majors: ["Software Engineering"],
+		courses: ["Java", "Programming"],
+		icon: "E",
+		desc: "Development environment for Java and other programming projects.",
+		tags: ["Java", "IDE"],
+		url: "https://www.eclipse.org/downloads/",
+		steps: ["Open the official Eclipse download page.", "Download the package recommended by your instructor.", "Run the installer or extract the package, depending on the download.", "Launch Eclipse and select a workspace folder.", "Create or import your course project."]
+	},
+	{
+		name: "MATLAB",
+		majors: ["Telecommunications", "Control Engineering"],
+		courses: ["Numerical Methods", "Engineering", "Linear Algebra"],
+		icon: "M",
+		desc: "Numerical computing environment used in engineering and scientific courses.",
+		tags: ["Math", "Engineering", "AI", "Linear Algebra"],
+		url: "https://www.mathworks.com/downloads/",
+		steps: ["Open the official MathWorks download page.", "Sign in with your MathWorks account if required.", "Download the MATLAB version required by your course.", "Run the installer.", "Follow the university license instructions."]
+	},
+	{
+		name: "Wireshark",
+		majors: ["Networking"],
+		courses: ["Networks", "CCNA"],
+		icon: "W",
+		desc: "Network protocol analyzer for packet capture and troubleshooting.",
+		tags: ["Networking", "Analysis"],
+		url: "https://www.wireshark.org/download.html",
+		steps: ["Open the official Wireshark download page.", "Choose your operating system.", "Download and run the installer.", "Install the required packet-capture component.", "Launch Wireshark and select a network interface."]
+	},
+	{
+		name: "Git",
+		majors: ["General"],
+		courses: ["Software Engineering", "DevOps"],
+		icon: "G",
+		desc: "Distributed version-control system for managing source code.",
+		tags: ["Git", "DevOps"],
+		url: "https://git-scm.com/downloads",
+		steps: ["Open the official Git downloads page.", "Select your operating system.", "Run the installer using the recommended options.", "Open a terminal.", "Run git --version to verify the installation."]
+	},
+	{
+		name: "Visual Studio Code",
+		majors: ["Software Engineering"],
+		courses: ["Programming", "Web Development", "DevOps"],
+		icon: "VS",
+		desc: "Lightweight code editor with extensions for many development workflows.",
+		tags: ["Editor", "Programming"],
+		url: "https://code.visualstudio.com/download",
+		steps: ["Open the official VS Code download page.", "Choose your operating system.", "Run the installer.", "Install the extensions required by your course.", "Open your project folder."]
+	},
+	{
+		name: "Cisco Packet Tracer",
+		majors: ["Networking"],
+		courses: ["CCNA", "Networks"],
+		icon: "PT",
+		desc: "Network simulation environment for Cisco networking labs.",
+		tags: ["Cisco", "Networking"],
+		url: "https://www.netacad.com/courses/packet-tracer",
+		steps: ["Open the official Cisco Networking Academy page.", "Sign in or create the account required by your institution.", "Open the Packet Tracer download area.", "Download the installer.", "Install and sign in if requested."]
+	},
+	{
+		name: "IntelliJ IDEA",
+		majors: ["Software Engineering"],
+		courses: ["Java", "Programming"],
+		icon: "IJ",
+		desc: "Java-focused IDE suitable for larger software projects.",
+		tags: ["Java", "IDE"],
+		url: "https://www.jetbrains.com/idea/download/",
+		steps: ["Open the official JetBrains download page.", "Choose the edition required by your course.", "Download and run the installer.", "Configure your JDK.", "Create or import your Java project."]
+	},
+	{
+		name: "MySQL",
+		majors: ["Software Engineering"],
+		courses: ["Databases", "SQL"],
+		icon: "SQL",
+		desc: "Relational database server for SQL and database-management courses.",
+		tags: ["SQL", "Database"],
+		url: "https://dev.mysql.com/downloads/mysql/",
+		steps: ["Open the official MySQL download page.", "Select the required version and operating system.", "Run the installer.", "Choose the setup type recommended by your course.", "Configure the root password and verify the server starts."]
+	},
+	{
+		name: "Docker Desktop",
+		majors: ["Software Engineering"],
+		courses: ["DevOps", "Cloud"],
+		icon: "D",
+		desc: "Container platform for application packaging and DevOps labs.",
+		tags: ["Docker", "DevOps"],
+		url: "https://www.docker.com/products/docker-desktop/",
+		steps: ["Open the official Docker Desktop page.", "Download the installer for your operating system.", "Run the installer.", "Restart if requested.", "Open Docker Desktop and verify it is running."]
+	}
+];
+let active="all";
+const chips=document.getElementById("chips");
+const majorSelect=document.getElementById("major");
+
+const majors = [...new Set(
+	apps.flatMap(a => a.majors)
+)].sort();
+
+function buildMajorFilters() {
+	chips.innerHTML = "";
+	majorSelect.innerHTML = '<option value="all">All majors</option>';
+
+	majors.forEach(x => {
+		let option = document.createElement("option");
+		option.value = x;
+		option.textContent = x;
+		majorSelect.appendChild(option);
+
+		let b = document.createElement("button");
+		b.className = "chip" + (x === active ? " active" : "");
+		b.textContent = x;
+		b.onclick = () => {
+			active = x;
+			majorSelect.value = x;
+			document.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
+			b.classList.add("active");
+			render();
+		};
+		chips.appendChild(b);
+	});
+
+	let allButton = document.createElement("button");
+	allButton.className = "chip" + (active === "all" ? " active" : "");
+	allButton.textContent = "All";
+	allButton.onclick = () => {
+		active = "all";
+		majorSelect.value = "all";
+		document.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
+		allButton.classList.add("active");
+		render();
+	};
+	chips.prepend(allButton);
+}
+
+function render() {
+	let q = document.getElementById("search").value.toLowerCase().trim();
+	let m = document.getElementById("major").value;
+
+	if (m !== active) {
+		active = m;
+		document.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
+		let activeChip = [...document.querySelectorAll(".chip")].find(c =>
+			(m === "all" ? c.textContent === "All" : c.textContent === m)
+		);
+		if (activeChip) activeChip.classList.add("active");
+	}
+
+	let list = apps.filter(a => {
+		const searchableText = [
+			a.name,
+			a.majors.join(" "),
+			a.courses.join(" "),
+			a.tags.join(" "),
+			a.desc
+		].join(" ").toLowerCase();
+
+		const matchesMajor = active === "all" || a.majors.includes(active);
+		const matchesSearch = searchableText.includes(q);
+
+		return matchesMajor && matchesSearch;
+	});
+
+	document.getElementById("count").textContent = `${list.length} application${list.length === 1 ? "" : "s"}`;
+	document.getElementById("grid").innerHTML = list.map(a => {
+		let i = apps.indexOf(a);
+		return `<article class="card"><div class="top"><div class="icon">${a.icon}</div><div><h3>${a.name}</h3><div class="meta">${a.majors.join(" • ")}</div></div></div><div class="desc">${a.desc}</div><div class="tags">${a.tags.map(t => `<span class="tag">${t}</span>`).join("")}</div><div class="actions"><button class="instructions" onclick="showInstructions(${i})">Instructions</button><button class="install" onclick="install(${i})">Install ↗</button></div></article>`;
+	}).join("");
+
+	document.getElementById("empty").style.display = list.length ? "none" : "block";
+}
+
+function install(i) {
+	window.open(apps[i].url, "_blank", "noopener,noreferrer");
+}
+
+function showInstructions(i) {
+	let a = apps[i];
+	document.getElementById("modalContent").innerHTML = `<div class="eyebrow">${a.majors.join(" • ")}</div><h2>${a.name}</h2><p style="color:#9db0c8">${a.desc}</p><ol class="steps">${a.steps.map(s => `<li>${s}</li>`).join("")}</ol><div class="note">The hub is offline. Only the installation/download page requires internet.</div><div class="actions"><button class="install" onclick="install(${i})">Open installation page ↗</button></div>`;
+	document.getElementById("modal").classList.add("show");
+}
+
+function closeModal() {
+	document.getElementById("modal").classList.remove("show");
+}
+
+function showAbout() {
+	document.getElementById("modalContent").innerHTML = `<div class="eyebrow">About</div><h2>CET Software Hub</h2><p style="color:#9db0c8;line-height:1.7">A self-contained HTML application. It does not contact a server to display the hub, so students can open it directly from their device.</p><div class="note">Internet is needed only when a student chooses an external installation link.</div>`;
+	document.getElementById("modal").classList.add("show");
+}
+
+function resetFilters() {
+	document.getElementById("search").value = "";
+	document.getElementById("major").value = "all";
+	active = "all";
+	document.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
+	let allChip = [...document.querySelectorAll(".chip")].find(c => c.textContent === "All");
+	if (allChip) allChip.classList.add("active");
+	render();
+}
+
+buildMajorFilters();
+render();
+</script>
+</body>
+</html>

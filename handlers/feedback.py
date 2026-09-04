@@ -1,4 +1,4 @@
-from click import Path
+from pathlib import Path
 
 from bot_instance import bot
 from config import ADMIN_ID
@@ -27,13 +27,17 @@ def option_handler(message):
 
 
     elif option == "💻 Software Hub":
+            file_path = Path(__file__).resolve().parent.parent / "CET_Software_Hub" / "index.html"
 
-        file_path = Path(__file__).resolve().parent.parent / "CET_Software_Hub" / "index.html"
-
-        with file_path.open("rb") as file:
-            bot.send_document(chat_id, file, caption="💻 CET Software Hub\n\nDownload the file and open it with your browser."
-)
-
+            if file_path.exists():
+                with file_path.open("rb") as file:
+                    bot.send_document(
+                        chat_id, 
+                        file, 
+                        caption="💻 CET Software Hub\n\nDownload the file and open it with your browser."
+                    )
+            else:
+                bot.send_message(chat_id, "⚠️ Software Hub file could not be found on the server.")
 
     elif option == "📢 Announcements & Group Chats":
         bot.send_message(chat_id, "إطَّلع على آخر الأخبار, وانضم لمجموعة الطلبة العامة من هنا:", reply_markup=main_keyboard.join_us_menu)

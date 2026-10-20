@@ -491,7 +491,56 @@ const apps = [
 		url: "https://dev.mysql.com/downloads/mysql/",
 		steps: ["Open the official MySQL download page.", "Select the required version and operating system.", "Run the installer.", "Choose the setup type recommended by your course.", "Configure the root password and verify the server starts."]
 	},
-	
+	{
+        name: "Cisco Packet Tracer",
+        majors: ["Communications", "Networking"],
+        courses: ["CCNA", "Networks"],
+        icon: "PT",
+        desc: "Network simulation environment for Cisco networking labs and communications courses.",
+        tags: ["Cisco", "Networking", "Communications"],
+        url: "https://www.netacad.com/courses/packet-tracer",
+        steps: ["Open the official Cisco Networking Academy page.", "Sign in or create the account required by your institution.", "In the search bar search for -Packet Tracer-.", "Download the installer matching your operating system.", "Install and sign in if requested."]
+    },
+    {
+        name: "SQL Server",
+        majors: ["Software Engineering"],
+        courses: ["Databases", "SQL"],
+        icon: "SQL",
+        desc: "Relational database management system developed by Microsoft.",
+        tags: ["SQL", "Database", "Microsoft"],
+        url: "https://www.microsoft.com/en-us/sql-server/sql-server-downloads",
+        steps: ["Open the official Microsoft SQL Server download page.", "Choose the edition (Developer or Express recommended for students).", "Run the downloaded installer.", "Select Custom or Basic installation type.", "Complete the setup and launch SQL Server Management Studio."]
+    },
+    {
+        name: "MySQL",
+        majors: ["Software Engineering"],
+        courses: ["Databases", "SQL"],
+        icon: "MYS",
+        desc: "Open-source relational database management system for web and software development.",
+        tags: ["SQL", "Database", "Open Source"],
+        url: "https://dev.mysql.com/downloads/mysql/",
+        steps: ["Open the official MySQL download page.", "Select the required version and operating system.", "Run the installer.", "Choose the setup type recommended by your course.", "Configure the root password and verify the server starts."]
+    },
+    {
+        name: "Visual Studio + Flutter SDK",
+        majors: ["Software Engineering"],
+        courses: ["Mobile Development","Programming"],
+        icon: "VS",
+        desc: "Integrated development environment bundled with Flutter SDK for cross-platform mobile apps.",
+        tags: ["Flutter", "Mobile", "IDE", "Dart","Editor"],
+        url: "https://flutter.dev/docs/get-started/install",
+        steps: ["Download and install Visual Studio Code.", "Download the Flutter SDK zip file or use git clone.", "Extract Flutter and add it to your system Environment Variables.", "Install the Flutter and Dart extensions in VS Code.", "Run flutter doctor in your terminal to verify the setup."]
+    },
+    {
+        name: "Octave Online",
+        majors: ["Telecommunications", "Software Engineering"],
+        courses: ["Linear Algebra", "Numerical Methods"],
+        icon: "OO",
+        desc: "Online practical platform and GNU Octave compiler for linear algebra and numerical computations.",
+        tags: ["Math", "Linear Algebra", "Online", "Matlab"],
+        url: "https://octave-online.net/",
+        steps: ["Open the official Octave Online website in your browser.", "Create a free account or use the interactive console directly.", "Write your linear algebra and matrix scripts.", "Run your code and check output online without installing heavy software."]
+    }
 ];
 let active="all";
 const chips=document.getElementById("chips");

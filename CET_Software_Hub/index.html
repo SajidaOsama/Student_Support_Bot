@@ -472,34 +472,14 @@ const apps = [
 		steps: ["Open the official VS Code download page.", "Choose your operating system.", "Run the installer.", "Install the extensions required by your course.", "Open your project folder."]
 	},
 	{
-		name: "Cisco Packet Tracer",
-		majors: ["Networking"],
-		courses: ["CCNA", "Networks"],
-		icon: "PT",
-		desc: "Network simulation environment for Cisco networking labs.",
-		tags: ["Cisco", "Networking"],
-		url: "https://www.netacad.com/courses/packet-tracer",
-		steps: ["Open the official Cisco Networking Academy page.", "Sign in or create the account required by your institution.", "Open the Packet Tracer download area.", "Download the installer.", "Install and sign in if requested."]
-	},
-	{
-		name: "MySQL",
-		majors: ["Software Engineering"],
-		courses: ["Databases", "SQL"],
-		icon: "SQL",
-		desc: "Relational database server for SQL and database-management courses.",
-		tags: ["SQL", "Database"],
-		url: "https://dev.mysql.com/downloads/mysql/",
-		steps: ["Open the official MySQL download page.", "Select the required version and operating system.", "Run the installer.", "Choose the setup type recommended by your course.", "Configure the root password and verify the server starts."]
-	},
-	{
         name: "Cisco Packet Tracer",
-        majors: ["Communications", "Networking"],
+        majors: ["Networking"],
         courses: ["CCNA", "Networks"],
         icon: "PT",
         desc: "Network simulation environment for Cisco networking labs and communications courses.",
         tags: ["Cisco", "Networking", "Communications"],
         url: "https://www.netacad.com/courses/packet-tracer",
-        steps: ["Open the official Cisco Networking Academy page.", "Sign in or create the account required by your institution.", "In the search bar search for -Packet Tracer-.", "Download the installer matching your operating system.", "Install and sign in if requested."]
+        steps: ["Open the official Cisco Networking Academy page.", "Sign in or create the account required by your institution.", "In the search bar search for packet tracer v9.", "Enroll in cisco packet tracer course","Download the installer matching your operating system.", "Install and sign in if requested."]
     },
     {
         name: "SQL Server",
@@ -515,21 +495,27 @@ const apps = [
         name: "MySQL",
         majors: ["Software Engineering"],
         courses: ["Databases", "SQL"],
-        icon: "MYS",
+        icon: "SQL",
         desc: "Open-source relational database management system for web and software development.",
         tags: ["SQL", "Database", "Open Source"],
         url: "https://dev.mysql.com/downloads/mysql/",
         steps: ["Open the official MySQL download page.", "Select the required version and operating system.", "Run the installer.", "Choose the setup type recommended by your course.", "Configure the root password and verify the server starts."]
     },
-    {
+  {
         name: "Visual Studio + Flutter SDK",
         majors: ["Software Engineering"],
-        courses: ["Mobile Development","Programming"],
+        courses: ["Mobile Development", "Programming"],
         icon: "VS",
-        desc: "Integrated development environment bundled with Flutter SDK for cross-platform mobile apps.",
-        tags: ["Flutter", "Mobile", "IDE", "Dart","Editor"],
-        url: "https://flutter.dev/docs/get-started/install",
-        steps: ["Download and install Visual Studio Code.", "Download the Flutter SDK zip file or use git clone.", "Extract Flutter and add it to your system Environment Variables.", "Install the Flutter and Dart extensions in VS Code.", "Run flutter doctor in your terminal to verify the setup."]
+        desc: "Visual Studio IDE set up alongside Flutter SDK for cross-platform app development and Windows native builds.",
+        tags: ["Visual Studio", "Flutter", "Mobile", "IDE", "Dart", "C++"],
+        url: "https://visualstudio.microsoft.com/downloads/",
+       steps: [
+            "Open the official Visual Studio download page and install Visual Studio Community (Note: Visual Studio is primarily for Windows; for macOS/Linux, use VS Code or Xcode).",
+            "Visit the official Flutter installation guide (https://docs.flutter.dev/get-started/install) and download the Flutter SDK zip file for your OS.",
+            "Extract the Flutter zip file to a stable directory (e.g., C:\\flutter) and add its 'bin' path to your system's Environment Variables (PATH).",
+            "Install the Flutter and Dart extensions inside your Visual Studio. ",
+            "Open Command Prompt, PowerShell, or Terminal and run 'flutter doctor' to check for missing components and confirm your setup."
+        ]     
     },
     {
         name: "Octave Online",
@@ -541,6 +527,7 @@ const apps = [
         url: "https://octave-online.net/",
         steps: ["Open the official Octave Online website in your browser.", "Create a free account or use the interactive console directly.", "Write your linear algebra and matrix scripts.", "Run your code and check output online without installing heavy software."]
     }
+	
 ];
 let active="all";
 const chips=document.getElementById("chips");
